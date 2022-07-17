@@ -6,10 +6,17 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
 
+//aca me estoy conectando a la base de datos
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/videogames`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
+
+//ver donde pongo esto de forma correcta
+//esta para verificar mi coneccion con la base de datos.
+sequelize.authenticate().then(()=>console.log("me conecte a la base de dato")).catch(()=>console.log("no me pude conectar a la base de datos"))
+
+//*************************AVERGUAR BIEN COMO FUNCIONA ESTE METODO************
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -21,12 +28,15 @@ fs.readdirSync(path.join(__dirname, '/models'))
     modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
 
+
+
 // Injectamos la conexion (sequelize) a todos los modelos
 modelDefiners.forEach(model => model(sequelize));
 // Capitalizamos los nombres de los modelos ie: product => Product
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
+
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
