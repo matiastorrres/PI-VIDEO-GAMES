@@ -1,7 +1,8 @@
-require('dotenv').config();
+require('dotenv').config(); //es para leer las variables de entorno
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const { throws } = require('assert');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -14,9 +15,9 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
 
 //ver donde pongo esto de forma correcta
 //esta para verificar mi coneccion con la base de datos.
-sequelize.authenticate().then(()=>console.log("me conecte a la base de dato")).catch(()=>console.log("no me pude conectar a la base de datos"))
+//sequelize.authenticate().then(()=>console.log("me conecte a la base de dato")).catch(()=>console.log("no me pude conectar a la base de datos"))
 
-//*************************AVERGUAR BIEN COMO FUNCIONA ESTE METODO************
+//**********************leemos los nombre de los archivos y verifiva que cumpla ciertos requisitos************
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -36,14 +37,16 @@ modelDefiners.forEach(model => model(sequelize));
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
-
+console.log(sequelize.models)
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Videogame } = sequelize.models;
+const { Videogame, Genre } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
+Videogame.belongsToMany(Genre, {through: "videoGameGenre"});
+Genre.belongsToMany(Videogame, {through: "videoGameGenre"});
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
