@@ -24,7 +24,8 @@ const getVideogamesApi = () => {
              name:e.name,
              id:e.id,
              background_image: e.background_image,
-             genres: e.genres.map(e=>e.name)
+             genres: e.genres.map(e=>e.name),
+             rating: e.rating
             })
         })
         return videogamesApi
@@ -34,7 +35,7 @@ const getVideogamesApi = () => {
 
 const getVideogamesDb = async ()=>{
     const videogames =await Videogame.findAll({
-        attributes:["name","id","background_image"],
+        attributes:["name","id","background_image", "rating"],
         include:[{
             model: Genre,
             attributes: ["name"],
@@ -46,7 +47,8 @@ const getVideogamesDb = async ()=>{
             name:e.name,
             id:e.id,
             background_image: e.background_image,
-            genres: e.Genres.map(e=>e.name)
+            genres: e.Genres.map(e=>e.name),
+            rating: e.rating
         }
      })
 }

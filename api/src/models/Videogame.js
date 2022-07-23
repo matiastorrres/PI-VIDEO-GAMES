@@ -46,7 +46,7 @@ module.exports = (sequelize) => {
       validate:{
         isUrl: true,
       }
-    }
+    },
   },{
     freezeTableName: true,
     timestamps: false

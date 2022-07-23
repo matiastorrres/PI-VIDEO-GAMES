@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  } 
+  
+  .landingPage__container {
+      background-image: url('../../img/videogame.png'); 
+      height: 100vh;
+      width: 100vw;
+      background-size: cover ;
+      background-position: center top;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-wrap: wrap;
+    }
+  
+    .landingPage__titulo {
+      color: rgba(255,255,255,1);
+      margin: 20px;
+      font-size: 3em;
+    }
+    .landingPage__texto {
+      color: rgba(255,255,255,1);
+      margin: 0;
+      font-size: 1.5em;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .landingPage__btn {
+      width: 20rem;
+      height: 5rem;
+      font-size: 2rem;
+      background-image: radial-gradient(circle at 104.75% 75.53%, #d9e5d3 0, #d6e6d5 3.85%, #d3e6d7 7.69%, #d0e7da 11.54%, #cee7dc 15.38%, #cce7df 19.23%, #cbe7e2 23.08%, #c9e7e5 26.92%, #c9e7e7 30.77%, #c9e7ea 34.62%, #c9e7ec 38.46%, #cae6ee 42.31%, #cbe6f0 46.15%, #cde5f2 50%, #cfe4f3 53.85%, #d2e4f4 57.69%, #d5e3f5 61.54%, #d8e2f5 65.38%, #dbe1f5 69.23%, #dee0f4 73.08%, #e2dff3 76.92%, #e5def2 80.77%, #e8ddf0 84.62%, #ebddee 88.46%, #eedcec 92.31%, #f0dcea 96.15%, #f2dbe7 100%);
+      color: rgb(0,0,0);
+      border:none;
+      border-radius: 10px;
+      box-shadow: 2px 2px 0px hsl(0, 0%, 90%),
+        4px 4px 0px hsl(0, 0%, 80%),
+        6px 6px 0px hsl(0, 0%, 70%),
+        8px 8px 0px hsl(0, 0%, 60%),
+        10px 10px 0px hsl(0, 0%, 50%),
+        12px 12px 0px hsl(0, 0%, 40%),
+        14px 14px 0px hsl(0, 0%, 30%),
+        16px 16px 0px hsl(0, 0%, 20%),
+        18px 18px 0px hsl(0, 0%, 10%);
+    }
+    
+    .landingPage__btn:hover {
+      background-color: hsl(0, 0%, 50%);
+      color: #fff;
+      box-shadow: none;
+      transition: 1s;
+    }
