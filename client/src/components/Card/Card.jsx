@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-function Card ({allvideogame}) {
+function Card ({currentVideogames}) {
     return(
         <section>
            {
-           allvideogame.map(e=>{
+           currentVideogames.map(e=>{
             return(
                 <div key={e.id}>
                     <Link to={`/detail/${e.id}`}>

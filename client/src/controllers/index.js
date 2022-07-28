@@ -31,15 +31,15 @@ export function orderRating (action, state) {
 
 export function filterTypeId(action, state){
     if( action.payload === 'api'){
-        const filter = state.allVideogame.filter(e=> typeof e.id === 'number')
+        const filter = state.aux.filter(e=> typeof e.id === 'number')
         return filter
     }else{
-        const filter = state.allVideogame.filter(e=> typeof e.id !== "number")
+        const filter = state.aux.filter(e=> typeof e.id !== "number")
         return filter
     }
 }
 
 export function filterGenre(action,state){
-    const genre = state.allVideogame.filter(e=>e.genres.includes(action.payload))
+    const genre = state.aux.filter(e=>e.genres.includes(action.payload))
     return genre
 }

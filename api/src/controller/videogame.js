@@ -25,7 +25,8 @@ const getVideogamesApi = () => {
              id:e.id,
              background_image: e.background_image,
              genres: e.genres.map(e=>e.name),
-             rating: e.rating
+             rating: e.rating,
+             platforms: e.platforms.map(e=>e.platform.name)
             })
         })
         return videogamesApi
@@ -109,8 +110,6 @@ const searchVideogame = async (name) =>{
     return videogame.slice(0,15)
 }
 
-
-
 const getDetailVideogameApi = (id)=>{
     return axios(`https://api.rawg.io/api/games/${id}?key=c11692bffe5f40318e7ff916c9786723`)
     .then(resp=>resp.data)
@@ -143,11 +142,18 @@ const getDetailVideogameDb = async (id) =>{
     return videogame
 }
 
+const getPlatforms = async()=>{
+    const videogame = await getVideogamesApi()
+    const platforms = videogame.map(e=>e.platforms).flat()
+    const platform= [...new Set(platforms)]
+    return platform
+}
 
 
 module.exports={
     allVideogames,
     searchVideogame,
     getDetailVideogameApi,
-    getDetailVideogameDb
+    getDetailVideogameDb,
+    getPlatforms
 }

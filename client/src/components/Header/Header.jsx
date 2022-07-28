@@ -1,8 +1,12 @@
-import HeaderCss from "./Header.module.css"
+import HeaderCss from "./Header.module.css";
+import {Link} from "react-router-dom"
 function Header (){
     return(
         <header className={HeaderCss.nav__container}>
-            soy el header
+            <p>soy el header</p>
+            <Link to={"/create"}>
+            <p>vamos a crear un video game</p>
+            </Link>
         </header>
     )
 }

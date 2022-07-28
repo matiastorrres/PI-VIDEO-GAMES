@@ -5,7 +5,8 @@ import {GET_ALL_VIDEOGAME,
         FILTER_BY_TYPE_ID, 
         GET_ALL_GENRES,
         FILTER_BY_GENRE,
-        DETAIL} from "./../typeActions";
+        DETAIL,
+        PLATFORM} from "./../typeActions";
 
 export function getAllVideogame (){
     return function(dispatch){
@@ -24,6 +25,7 @@ export function searchVideogame(name){
         .catch(error=>console.log(error))
     }
 }
+
 export function getaAllGenres(){
     return function(dispatch){
         fetch("http://localhost:3001/genre")
@@ -32,24 +34,39 @@ export function getaAllGenres(){
         .catch(error=>console.log(error))
     }
 }
+
 export function orderByName(order){
     console.log(order)
     return { type:ORDER_BY_NAME, payload:order }
 }
+
 export function orderByRating(order){
     console.log(order)
     return { type:ORDER_BY_RATING, payload:order }
 }
+
 export function filterByTypeId(filter){
    return {type:FILTER_BY_TYPE_ID, payload:filter}
 }
+
 export function filterByGenre(filter){
     return {type:FILTER_BY_GENRE, payload: filter}
 }
+
 export function getDetail (id){
     return function(dispatch){
         fetch(`http://localhost:3001/videogame/${id}`)
         .then(res=>res.json())
         .then(payload=>dispatch({type:DETAIL, payload}))
+        .catch(error=>console(error))
+    }
+}
+
+export function getPlatform (){
+    return function(dispatch){
+        fetch("http://localhost:3001/videogame/platform")
+        .then(res=>res.json())
+        .then(payload => dispatch ({type:PLATFORM, payload}))
+        .catch(error=>console(error))
     }
 }

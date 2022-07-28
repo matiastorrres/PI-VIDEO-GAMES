@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { useEffect } from "react";
 
 
-function Aside (){
+function Aside ({setPage}){
     const dispatch =useDispatch();
     const genres = useSelector(state=>state.allGenre)
 
@@ -20,16 +20,19 @@ function Aside (){
     }
 
     const hadleFilterByTypeId = (e)=>{
-        dispatch(filterByTypeId(e.target.value));       
+        dispatch(filterByTypeId(e.target.value));
+        setPage(1)       
     }
 
     const handleFilterByGenre = (e)=>{
-        dispatch(filterByGenre(e.target.value))
+        dispatch(filterByGenre(e.target.value));
+        setPage(1)
     }
 
     return(
         <aside>
-            <select onChange={e=>handleFilterByGenre(e)}>
+            <label >Choose a genres: </label>
+            <select onChange={e=>handleFilterByGenre(e)} name="genres">
                 {
                    genres.map(e=>{
                     return (<option value={e} key={e}>{e}</option>)

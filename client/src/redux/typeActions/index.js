@@ -6,3 +6,4 @@ export const FILTER_BY_TYPE_ID= "FILTER_BY_TYPE_ID";
 export const GET_ALL_GENRES = "GET_ALL_GENRES";
 export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const DETAIL = "DETAIL";
+export const PLATFORM = "PLATFORM";

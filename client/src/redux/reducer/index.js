@@ -5,15 +5,18 @@ import { GET_ALL_VIDEOGAME,
          FILTER_BY_TYPE_ID, 
          GET_ALL_GENRES, 
          FILTER_BY_GENRE,
-         DETAIL} from "../typeActions";
+         DETAIL,
+         PLATFORM} from "../typeActions";
 
 import {orderName, orderRating, filterTypeId, filterGenre } from "../../controllers"
 
 
 const initialState={
     allVideogame:[],
+    aux: [],
     allGenre:[],
-    detail:{}
+    detail:{},
+    allPlatform:[]
 }
 
 const rootReducer = (state = initialState, action) =>{
@@ -21,13 +24,16 @@ const rootReducer = (state = initialState, action) =>{
     switch(action.type){
         
         case GET_ALL_VIDEOGAME:
-            return {...state, allVideogame: action.payload}
+            return {...state, allVideogame: action.payload, aux:action.payload}
 
         case SEARCH_VIDEOGAME:
-            return {...state, allVideogame: action.payload}
+            return {...state, allVideogame: action.payload, aux:action.payload}
 
         case GET_ALL_GENRES:
             return {...state, allGenre: action.payload}
+        
+        case PLATFORM:
+            return {...state, allPlatform: action.payload}
 
         case ORDER_BY_NAME:
             const name = orderName(action, state)

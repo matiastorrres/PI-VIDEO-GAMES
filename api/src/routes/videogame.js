@@ -1,6 +1,6 @@
-const { Router } = require("express");
+const { Router, response } = require("express");
 const router = Router();
-const { allVideogames, searchVideogame, getDetailVideogameApi, getDetailVideogameDb} = require("./../controller/videogame")
+const { allVideogames, searchVideogame, getDetailVideogameApi, getDetailVideogameDb, getPlatforms} = require("./../controller/videogame")
 const {httpError} = require("../helpers/handleError")
 const {Videogame, Genre} = require("./../db");
 
@@ -19,6 +19,15 @@ router.get("/", async (req,res)=>{
     }
 }); 
 
+router.get("/platform",async (req,res)=>{
+    try {
+        const platforms = await getPlatforms();
+        res.json(platforms)   
+    } catch (error) {
+        return httpError(res,error)
+    }
+})
+
 router.get("/:id",async(req, res)=>{
     const {id} = req.params;
     const expReg = /[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}/;
@@ -36,6 +45,7 @@ router.get("/:id",async(req, res)=>{
         return httpError(res,error)
     }
 })
+
 
 router.post("/", async(req, res)=>{
     const {name, background_image, genres, description, released, rating, platforms} = req.body
