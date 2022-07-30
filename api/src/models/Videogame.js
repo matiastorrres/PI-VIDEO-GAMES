@@ -38,11 +38,12 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     description:{
-      type: DataTypes.TEXT, 
+      type: DataTypes.STRING, 
       allowNull: false
     },
     background_image:{
       type: DataTypes.STRING,
+      defaultValue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGYs5ROA0wiJXB-JgeRYWih8WV4owxsjhyq0CudE6wyiYDy-d_Zx3PFkaKBHa2me8PNuM&usqp=CAU",
       validate:{
         isUrl: true,
       }

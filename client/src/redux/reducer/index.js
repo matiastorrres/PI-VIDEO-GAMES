@@ -6,7 +6,8 @@ import { GET_ALL_VIDEOGAME,
          GET_ALL_GENRES, 
          FILTER_BY_GENRE,
          DETAIL,
-         PLATFORM} from "../typeActions";
+         PLATFORM,
+        CLEAN_DATA} from "../typeActions";
 
 import {orderName, orderRating, filterTypeId, filterGenre } from "../../controllers"
 
@@ -37,26 +38,24 @@ const rootReducer = (state = initialState, action) =>{
 
         case ORDER_BY_NAME:
             const name = orderName(action, state)
-            console.log(name)
-            return {...state, allVideogame: name }
+            return {...state, allVideogame: action.payload==="all"? state.aux : name }
 
         case ORDER_BY_RATING:
             const rating = orderRating(action, state)
-            console.log(rating)
-            return{...state, allVideogame: rating}
+            return{...state, allVideogame: action.payload==="all"? state.aux : rating}
 
         case FILTER_BY_TYPE_ID:
             const id = filterTypeId(action,state);
-            console.log(id)
-            return {...state, allVideogame: id}
+            return {...state, allVideogame: action.payload==="all"? state.aux : id}
 
         case FILTER_BY_GENRE:
             const genre = filterGenre(action,state);
-            console.log(genre)
-            return {...state, allVideogame: genre}
+            return {...state, allVideogame: action.payload==="all"? state.aux : genre}
 
         case DETAIL:
             console.log(action.payload)
+            return {...state, detail: action.payload}
+        case CLEAN_DATA:
             return {...state, detail: action.payload}
             
         default:

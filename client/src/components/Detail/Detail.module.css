@@ -1,0 +1,16 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  } 
+
+.Detail__container { 
+    height: 100vh;
+    width: 100vw;
+    background-size: cover ;
+    background-position: center top;
+    /* display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap; */
+  }

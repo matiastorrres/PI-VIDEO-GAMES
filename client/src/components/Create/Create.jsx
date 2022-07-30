@@ -112,8 +112,8 @@ function Create (){
         genres:[],
         platforms:[]
         })
+        alert("el juego se creo exitosamente")
         history.push("/home")
-
     }
     
 

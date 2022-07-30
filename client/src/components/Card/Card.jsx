@@ -1,17 +1,22 @@
 import { Link } from "react-router-dom";
+import cardCss from "./Card.module.css"
+import Error from "../Error/Error"
+
 function Card ({currentVideogames}) {
     return(
-        <section>
-           {
+        <section className={cardCss.Card__container}>
+           { currentVideogames.length > 0?
            currentVideogames.map(e=>{
             return(
-                <div key={e.id}>
+                <div key={e.id} >
                     <Link to={`/detail/${e.id}`}>
-                    <h3 key={e.name}>{e.name}</h3>
+                    <h3>{e.name}</h3>
                     </Link>
-                    <img src={e.background_image} alt="img" width="100px" height="100px" key={e.background_image}/>
-                    {e.genres.map(e=><p key={e}>{e}</p>)}
-                </div>)})
+                    <img src={e.background_image} alt="img" width="100px" height="100px"  />
+                    {e.genres.map(e=><p key={e} >{e}</p>)}
+                    <p>{e.rating}</p>
+                </div>)}) 
+                : <Error />
            }
         </section>
         

@@ -4,7 +4,7 @@ import { useState} from "react";
 import {searchVideogame} from "../../redux/actions";
 
 
-function Nav (){
+function Nav ({setPage}){
     const [name, setName] = useState("")
 
     const dispatch =useDispatch();
@@ -12,7 +12,7 @@ function Nav (){
     const handleSubmit = (e)=>{
         e.preventDefault();
         dispatch(searchVideogame(name));
-        setName("");
+        setPage(1);
     }
     
     return(

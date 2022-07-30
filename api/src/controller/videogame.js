@@ -9,7 +9,7 @@ const getVideogamesApi = () => {
     const arrayOfPromises = [];
     for(let i=1; i<=5; i++){
         arrayOfPromises.push( new Promise((resolve , reject)=>{
-             axios(`https://api.rawg.io/api/games?key=c11692bffe5f40318e7ff916c9786723&page=${i}`)
+             axios(`https://api.rawg.io/api/games?key=8761ae20e58647b9afe9be4fa662afe2&page=${i}`)
             .then(res =>resolve(res.data.results))
             .catch((error)=>reject(error))
         }))
@@ -62,7 +62,7 @@ const allVideogames = async ( ) => {
 }
 
 const searchVideogameApi = (name) => {
-    return axios(`https://api.rawg.io/api/games?search=${name}&key=c11692bffe5f40318e7ff916c9786723`)
+    return axios(`https://api.rawg.io/api/games?search=${name}&key=8761ae20e58647b9afe9be4fa662afe2`)
     .then(result=>result.data.results)
     //.then(res=>console.log(res))
     .then(result =>{
@@ -111,7 +111,7 @@ const searchVideogame = async (name) =>{
 }
 
 const getDetailVideogameApi = (id)=>{
-    return axios(`https://api.rawg.io/api/games/${id}?key=c11692bffe5f40318e7ff916c9786723`)
+    return axios(`https://api.rawg.io/api/games/${id}?key=8761ae20e58647b9afe9be4fa662afe2`)
     .then(resp=>resp.data)
     .then(data =>{
         return{

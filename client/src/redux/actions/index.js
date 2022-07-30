@@ -6,7 +6,8 @@ import {GET_ALL_VIDEOGAME,
         GET_ALL_GENRES,
         FILTER_BY_GENRE,
         DETAIL,
-        PLATFORM} from "./../typeActions";
+        PLATFORM,
+        CLEAN_DATA} from "./../typeActions";
 
 export function getAllVideogame (){
     return function(dispatch){
@@ -69,4 +70,8 @@ export function getPlatform (){
         .then(payload => dispatch ({type:PLATFORM, payload}))
         .catch(error=>console(error))
     }
+}
+
+export function cleanData() {
+    return {type: CLEAN_DATA, payload: {}}
 }

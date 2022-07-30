@@ -7,3 +7,4 @@ export const GET_ALL_GENRES = "GET_ALL_GENRES";
 export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const DETAIL = "DETAIL";
 export const PLATFORM = "PLATFORM";
+export const CLEAN_DATA= "CLEAN_DATA"
