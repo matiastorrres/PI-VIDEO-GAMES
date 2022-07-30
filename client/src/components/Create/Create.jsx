@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {getPlatform, getaAllGenres, getAllVideogame} from "../../redux/actions"
 import {Link, useHistory} from "react-router-dom"
-//import validate from "../../controllers/validaciones"
-
+import formCss from "./Create.module.css"
 function Create (){
     const[input, setInput] =useState({
         name:"",
@@ -118,61 +117,67 @@ function Create (){
     
 
     return(
-        <section>
+        <section className={formCss.section}>
             <Link to="/home">
-            <div>back</div>
+            <button  className={formCss.botton}>back
+            </button>
             </Link>
-            <form onSubmit={handlepost}>  
-            <div>
-                <label>videogame name: </label>
+            <form onSubmit={handlepost} className={formCss.Form__container}>  
+            <div className={formCss.Form__name}>
+                <label className={formCss.Form__label} >Videogame name: </label>
                 <input type="text" 
+                className={formCss.Form__input}
                 value={input.name} 
                 name="name" 
                 onChange={ (e)=> { handleChange(e); validateName(e.target.value) ; handleRepeat(e.target.value) } } />
-                {errors.name? <p>{errors.name}</p> : null}
+                {errors.name? <p className={formCss.Form__error}>{errors.name}</p> : null}
                 {repeat? <p>{repeat}</p> : null}
             </div>
-            <div>
-                <label>description: </label>
-                <textarea name="description" 
+            <div className={formCss.Form__description}>
+                <label className={formCss.Form__label}>Description: </label>
+                <textarea name="description"
                 rows="5" 
-                cols="20" 
+                cols="100" 
                 value={input.description} 
                 onChange={(e)=>handleChange(e)}
                 onBlur={(e)=>validateDescription(e.target.value)}/>
-                {errors.description? <p>{errors.description}</p> : null}
+                {errors.description? <p className={formCss.Form__error}> {errors.description} </p> : null}
             </div>
-            <div>
-                <label>release date: </label>
+            <div className={formCss.Form__date}>
+                <label className={formCss.Form__label} >release date: </label>
                 <input type="date" 
                 name="released" 
                 value={input.released} 
                 onChange={(e)=>{handleChange(e) ; validateReleased(e.target.value)}}/>
-                {errors.released? <p>{errors.released}</p> : null}
+                {errors.released? <p className={formCss.Form__error}> {errors.released} </p> : null}
             </div>
-            <div>
-                <label>Rating: </label>
+            <div className={formCss.Form__rating}>
+                <label className={formCss.Form__label}>Rating: </label>
                 <input type="number" 
                 name="rating" 
                 value={input.rating} 
                 onChange={(e)=>{handleChange(e) ; validateRating(e.target.value)}} />
-                {errors.rating? <p>{errors.rating}</p> : null}
+                {errors.rating? <p className={formCss.Form__error} >{errors.rating}</p> : null}
             </div>
-            <div>
-                <label>image: </label>
+            <div className={formCss.Form__img}>
+                <label className={formCss.Form__label}>Image: </label>
                 <input type="url" 
                 value={input.background_image} 
                 name="background_image" 
                 onChange={(e)=>handleChange(e)} 
                 onBlur={(e)=>validateImagen(e.target.value)}/>
-                {errors.background_image? <p>{errors.background_image}</p> : null}
+                {errors.background_image? <p className={formCss.Form__error} >{errors.background_image}</p> : null}
             </div>
-            <div>
-                {allGenre.map(e => <label key={e}> {e} <input type="checkbox" key={e} value={e} onChange={e=>{genreCheck(e)}}/> </label>)}
+            <div className={formCss.Form__genres}>
+                {allGenre.map(e => 
+                <label key={e} className={formCss.Form__label}> {e} <input type="checkbox" key={e} value={e} onChange={e=>{genreCheck(e)}}/> 
+                </label>)}
                 {errors.genres? <p>{errors.genres}</p> : null}
             </div>
-            <div>
-                {allPlatform.map(e => <label key={e}> {e} <input type="checkbox" key={e} value={e} onChange={e=>{platformCheck(e)}} /> </label>)}
+            <div className={formCss.Form__platform}>
+                {allPlatform.map(e =>
+                <label key={e} className={formCss.Form__label}> {e} <input type="checkbox" key={e} value={e} onChange={e=>{platformCheck(e)}} /> 
+                </label>)}
             </div>
                 <input type="submit" disabled={!input.name || !input.genres.length || !input.platforms.length || repeat || !input.description}  />             
             </form>

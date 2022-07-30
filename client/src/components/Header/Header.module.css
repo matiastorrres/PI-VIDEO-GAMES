@@ -5,11 +5,11 @@
   } 
 
 .header__container{
-    background-color: #0769e9;
+    background-color:black;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     height: 60px;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
+
+

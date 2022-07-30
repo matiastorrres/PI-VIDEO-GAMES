@@ -1,12 +1,12 @@
 import Card from "../Card/Card";
 import Header from "../Header/Header";
-import Nav from "../Nav/Nav";
 import Aside from "../Aside/Aside";
 import Paginated from "../Paginated/Paginated";
 import Loading from "../Loading/Loading";
 import { useDispatch, useSelector} from "react-redux";
 import { useEffect, useState } from "react";
 import {getAllVideogame} from "./../../redux/actions"
+
 
 
 function Main () {
@@ -53,8 +53,7 @@ function Main () {
     if(loading ) return(<Loading/>)
     return(
         <section>
-            <Header/>
-            <Nav setPage={setPage}/>
+            <Header setPage={setPage}/>
             <Aside setPage={setPage} order={order} setOrder={setOrder}/>
             <Paginated
             calculationNumberPage={calculationNumberPage}

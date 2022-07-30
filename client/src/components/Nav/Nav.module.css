@@ -3,15 +3,41 @@
     margin: 0;
     box-sizing: border-box;
   } 
-
-.nav__container { 
-    height: 60px;
-    width: 100vw;
-    background-color: red;
-    background-size: cover ;
-    background-position: center top;
+  .nav__container {
     display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
+    align-items: center;
   }
+  
+  .nav__input {
+    min-height: 40px;
+    max-width: 200px;
+    padding: 0 1rem;
+    color: #fff;
+    font-size: 15px;
+    border: 1px solid gray;
+    border-radius: 6px 0 0 6px;
+    background-color: transparent;
+  } 
+  
+  .nav__inputSubmit {
+    min-height: 40px;
+    padding: .5em 1em;
+    border: solid white 2px;
+    border-radius: 0 6px 6px 0;
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
+  }
+  
+  .nav__inputSubmit:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  .nav__input:focus, .nav__input:focus-visible {
+    border-color: #3898EC;
+    outline: none;
+  }
+  

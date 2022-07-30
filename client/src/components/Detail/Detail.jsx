@@ -36,29 +36,29 @@ function Detail (){
     }
     if(loading) return <Loading/>
     return(
-        <div className={detailCss.Detail__container}>
+        <section className={detailCss.section}>
             <Link to="/home">
-            <div onClick={handleLoading}>back</div>
+            <button onClick={handleLoading} className={detailCss.botton}>back
+            </button>
             </Link>
             { detail.error?
             <Error/> :
-           <div>
-           <h2>{detail.name}</h2>
-            <img src= {detail.background_image} alt= "detail" height="500px"/>
-           <div> genres:
-           {detail.genres && detail.genres.map(e=><p key={e}> {e} </p>) }
-           </div>
-           <div> description:
-           <p>{detail.description && detail.description.replace(/<[^>]+>/g, '')}</p>
-           </div>
-           <p>released: {detail.released}</p>
+           <div className={detailCss.Detail__container} >
+           <h2 className={detailCss.Detail__title}>{detail.name}</h2>
+           <img src= {detail.background_image} alt= "detail" className={detailCss.Detail__img}/>
+           <ul className={detailCss.Detail__genres}> genres:   
+           {detail.genres && detail.genres.map(e=><li key={e}> -- {e} -- </li>) }
+           </ul>
+           <ul className={detailCss.Detail__plataforms}> plataforms:   
+           {detail.platforms && detail.platforms.map(e=> <li key={e}>-- {e} --</li>)} 
+           </ul>
+           <p className={detailCss.Detail__description}> description: {detail.description && detail.description.replace(/<[^>]+>/g, '')}</p>
+           <p className={detailCss.Detail__released}>released: {detail.released}</p>
            <p>rating: {detail.rating}</p>
-           <div> plataforms: 
-           {detail.platforms && detail.platforms.map(e=> <p key={e}>{e}</p>)} 
            </div>
-           </div>
+          
             }
-        </div>
+        </section>
     )
 }
 

@@ -11,9 +11,11 @@ function Paginated ({calculationNumberPage, handleNumberPage, goToNextPage, goTo
     return(
         <div className={asideCss.Paginate__container }>
             <button onClick={goToPreviousPage}>Previous</button>
+            <div>
             {
                 numberPage.map(nro => <button key={nro} value={nro}onClick={e=>handleNumberPage(e.target.value)}> {nro} </button>)
             }
+            </div>
             <button onClick={goToNextPage}>Next</button>
         </div>
     )
