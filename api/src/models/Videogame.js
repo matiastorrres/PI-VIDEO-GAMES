@@ -29,7 +29,7 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       validate:{
         min:0,
-        max:10,
+        max:5,
         isNumeric: true
       }   
     },
@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     description:{
-      type: DataTypes.STRING, 
+      type: DataTypes.TEXT, 
       allowNull: false
     },
     background_image:{

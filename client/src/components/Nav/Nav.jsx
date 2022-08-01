@@ -17,8 +17,12 @@ function Nav ({setPage}){
     
     return(
         <nav className={NavCss.nav__container}>
-            <input type="text" placeholder="find your game" value={name} onChange={e=>setName(e.target.value)} className={NavCss.nav__input}/>
-            <input type="submit" onClick={e=>handleSubmit(e)} className={NavCss.nav__inputSubmit}/>
+            <input type="text" 
+            placeholder="find your game" 
+            value={name} 
+            onChange={e=>setName(e.target.value)} 
+            className={NavCss.nav__input}/>
+            <input type="submit"  value="search"onClick={e=>handleSubmit(e)} className={NavCss.nav__inputSubmit}/>
         </nav>
     )
 }

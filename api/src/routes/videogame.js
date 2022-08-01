@@ -10,7 +10,7 @@ router.get("/", async (req,res)=>{
         if(name){
         const searchVideo =await searchVideogame(name)
         if(searchVideo.length>0) return res.json(searchVideo) 
-        return res.send("no game found") 
+        return res.status(404).json("no game found")
         }
         const videogames = await allVideogames()
         return res.json(videogames)
@@ -46,7 +46,6 @@ router.get("/:id",async(req, res)=>{
     }
 })
 
-
 router.post("/", async(req, res)=>{
     const {name, background_image, genres, description, released, rating, platforms} = req.body
     try {
@@ -63,12 +62,14 @@ router.post("/", async(req, res)=>{
             platforms,
             }
         })
-         if(created===false) return res.json("existing videogame")
-
+         if(created===false) return res.status(500).send("existing videogame")
+        console.log(genres)
          const genresDb = await Genre.findAll({
-            where: {name: genres }
+            where: {name: genres } //aca podemos mandar un array con todos los valores, no hace falta que pasemos uno por uno
         });
-          videogame.addGenres(genresDb)
+           
+          await videogame.addGenres(genresDb)
+          genresDb.map(e=>console.log(e.toJSON())) //me devulve un array de objetos
          return res.json("successfully created video game")
          
     } catch (error) {

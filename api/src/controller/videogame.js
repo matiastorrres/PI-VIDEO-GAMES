@@ -1,15 +1,14 @@
-//const { YOUR_API_KEY, URL_API } = process.env; //ver despues porque no me funciona
-//`${URL_API}/1?key=${YOUR_API_KEY}`  //ver despues porque no me funciona
 const axios = require("axios");
 const {Videogame, Genre} = require("./../db");
 const {Op} = require ("sequelize");
+const {YOUR_API_KEY} = process.env; //si lo pones al principio no funciona//porque las variables de entorno van al ultimo?
 
 
 const getVideogamesApi = () => {
     const arrayOfPromises = [];
     for(let i=1; i<=5; i++){
         arrayOfPromises.push( new Promise((resolve , reject)=>{
-             axios(`https://api.rawg.io/api/games?key=8761ae20e58647b9afe9be4fa662afe2&page=${i}`)
+             axios(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}&page=${i}`)
             .then(res =>resolve(res.data.results))
             .catch((error)=>reject(error))
         }))
@@ -62,7 +61,7 @@ const allVideogames = async ( ) => {
 }
 
 const searchVideogameApi = (name) => {
-    return axios(`https://api.rawg.io/api/games?search=${name}&key=8761ae20e58647b9afe9be4fa662afe2`)
+    return axios(`https://api.rawg.io/api/games?search=${name}&key=${YOUR_API_KEY}`)
     .then(result=>result.data.results)
     //.then(res=>console.log(res))
     .then(result =>{
@@ -102,7 +101,6 @@ const searchVideogameDb = async(name1) => {
      })
 }
 
-//aca queda implementar el metodo sort 
 const searchVideogame = async (name) =>{
     const videogameApi = await searchVideogameApi(name);
     const videogameDb = await searchVideogameDb(name);
@@ -111,7 +109,7 @@ const searchVideogame = async (name) =>{
 }
 
 const getDetailVideogameApi = (id)=>{
-    return axios(`https://api.rawg.io/api/games/${id}?key=8761ae20e58647b9afe9be4fa662afe2`)
+    return axios(`https://api.rawg.io/api/games/${id}?key=${YOUR_API_KEY}`)
     .then(resp=>resp.data)
     .then(data =>{
         return{

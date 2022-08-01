@@ -1,8 +1,8 @@
 const axios = require("axios");
 const {Genre} =require("../db")
-
+const {YOUR_API_KEY} = process.env;
 const getGenreApi = () =>{
-    return axios("https://api.rawg.io/api/genres?key=8761ae20e58647b9afe9be4fa662afe2")
+    return axios(`https://api.rawg.io/api/genres?key=${YOUR_API_KEY}`)
     .then(resp=>resp.data.results)
     .then(resp=>{
         return resp.map(e=>{

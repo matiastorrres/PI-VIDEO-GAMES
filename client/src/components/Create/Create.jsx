@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {getPlatform, getaAllGenres, getAllVideogame} from "../../redux/actions"
 import {Link, useHistory} from "react-router-dom"
-import formCss from "./Create.module.css"
+import formCss from "./Create.module.css";
+import Loading from "../Loading/Loading";
 function Create (){
+    const[loading,setLoading]=useState(true)
     const[input, setInput] =useState({
         name:"",
         description:"",
@@ -114,7 +116,11 @@ function Create (){
         alert("el juego se creo exitosamente")
         history.push("/home")
     }
-    
+    console.log(allPlatform.length)
+    if(allPlatform.length > 0 && loading){
+        setLoading(false);
+    }
+    if(loading) return <Loading/>
 
     return(
         <section className={formCss.section}>
@@ -179,7 +185,9 @@ function Create (){
                 <label key={e} className={formCss.Form__label}> {e} <input type="checkbox" key={e} value={e} onChange={e=>{platformCheck(e)}} /> 
                 </label>)}
             </div>
-                <input type="submit" disabled={!input.name || !input.genres.length || !input.platforms.length || repeat || !input.description}  />             
+                <input type="submit" 
+                value="to create"
+                disabled={!input.name || !input.genres.length || !input.platforms.length || repeat || !input.description}  />             
             </form>
         </section>
     )
