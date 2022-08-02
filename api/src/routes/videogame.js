@@ -10,7 +10,7 @@ router.get("/", async (req,res)=>{
         if(name){
         const searchVideo =await searchVideogame(name)
         if(searchVideo.length>0) return res.json(searchVideo) 
-        return res.status(404).json("no game found")
+        return res.json("no game found")
         }
         const videogames = await allVideogames()
         return res.json(videogames)

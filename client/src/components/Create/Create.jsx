@@ -4,6 +4,7 @@ import {getPlatform, getaAllGenres, getAllVideogame} from "../../redux/actions"
 import {Link, useHistory} from "react-router-dom"
 import formCss from "./Create.module.css";
 import Loading from "../Loading/Loading";
+
 function Create (){
     const[loading,setLoading]=useState(true)
     const[input, setInput] =useState({
@@ -35,19 +36,19 @@ function Create (){
         setInput((input) => ( { ...input, [e.target.name]: e.target.value } ));
     }
     function validateName (value) {
-        const string =  /^[a-zA-Z0-9-() .]+$/
-        if(!string.test(value) || !value || value.length > 255) 
+        const string =  /^[a-zA-Z0-9-()-: .]+$/
+        if(!string.test(value) || !value || value.length > 255 || value.trim().length <= 0) 
         setErrors({...errors, name: "Este campo es obligatorio, se aceptan letras, numeros, guiones medios, parentesis y como maximo 255 caracteres"})
         else setErrors({...errors, name:false})
     }
     function handleRepeat(value){
         const repeat=allVideogame.filter(e=>e.name===value);
-        if(repeat.length > 0) setRepeat("nombre existente")
+        if(repeat.length > 0) setRepeat("nombre existente");
         else setRepeat(false)
     }
     function validateDescription (value) {
-        const string =  /^[a-zA-Z0-9-() .]+$/
-        if(!string.test(value) || !value) setErrors({...errors, description: "Este campo es obligatorio, se aceptan letras, numeros, guiones medios y parentesis"})
+        const string =  /^[a-zA-Z0-9-()-: .]+$/
+        if(!string.test(value) || !value || value.trim().length <= 0) setErrors({...errors, description: "Este campo es obligatorio, se aceptan letras, numeros, guiones medios y parentesis"})
         else setErrors({...errors, description:false})
     }
    
@@ -65,7 +66,8 @@ function Create (){
     }
    function validateRating(value){
     const validar = /^\d*(\.\d{1})?\d{0,1}$/
-      if(value > 5 || value < 0 || !validar.test(value)) 
+      console.log(value.length)
+      if(value > 5 || value < 0 || !validar.test(value) || value.length > 4) 
       setErrors({...errors, rating:"debe ser mayor a 0 y menor a 5, puede contener dos decimales separados por un punto de la parte enteras"})
       else setErrors({...errors, rating:false});
     }
@@ -116,7 +118,8 @@ function Create (){
         alert("el juego se creo exitosamente")
         history.push("/home")
     }
-    console.log(allPlatform.length)
+    
+
     if(allPlatform.length > 0 && loading){
         setLoading(false);
     }
@@ -137,7 +140,7 @@ function Create (){
                 name="name" 
                 onChange={ (e)=> { handleChange(e); validateName(e.target.value) ; handleRepeat(e.target.value) } } />
                 {errors.name? <p className={formCss.Form__error}>{errors.name}</p> : null}
-                {repeat? <p>{repeat}</p> : null}
+                {repeat? <p className={formCss.Form__error} >{repeat}</p> : null}
             </div>
             <div className={formCss.Form__description}>
                 <label className={formCss.Form__label}>Description: </label>

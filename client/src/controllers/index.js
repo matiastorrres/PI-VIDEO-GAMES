@@ -1,32 +1,41 @@
 
 export function orderName (action, state) {
-    const order = action.payload === 'az' ?
-    state.allVideogame.sort((a, b) => {
+    
+    if(action.payload === 'az'){
+    const order =state.aux.sort((a, b) => {
         if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
         if (b.name.toLowerCase() > a.name.toLowerCase()) return -1;
         return 0;
-    }) :
-    state.allVideogame.sort((a, b) => {
+    }) 
+    return order
+    }
+    if(action.payload === 'za'){
+    const order=state.aux.sort((a, b) => {
         if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
         if (b.name.toLowerCase() < a.name.toLowerCase()) return -1;
         return 0;
     });
     return order
+    }
 }
 
 export function orderRating (action, state) {
-    const order = action.payload === 'asc' ?
-    state.allVideogame.sort((a, b) => {
+    if(action.payload === 'asc'){
+    const order = state.aux.sort((a, b) => {
         if (a.rating > b.rating) return 1;
         if (b.rating > a.rating) return -1;
         return 0;
-    }) :
-    state.allVideogame.sort((a, b) => {
-        if (a.rating < b.rating) return 1;
-        if (b.rating < a.rating) return -1;
-        return 0;
-    });
+    }) 
     return order
+    }
+    if(action.payload === "des"){
+        const order = state.aux.sort((a, b) => {
+            if (a.rating < b.rating) return 1;
+            if (b.rating < a.rating) return -1;
+            return 0;
+    })
+    return order
+    }
 }
 
 export function filterTypeId(action, state){

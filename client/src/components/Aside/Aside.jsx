@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { useEffect } from "react";
 import asideCss from "./Aside.module.css"
 
-function Aside ({setPage, order, setOrder}){
+function Aside ({setPage, setOrder, allvideogame}){
     const dispatch =useDispatch();
     const genres = useSelector(state=>state.allGenre);
 
@@ -12,21 +12,25 @@ function Aside ({setPage, order, setOrder}){
     },[dispatch])
 
     const handleOrderByName = (e)=>{
+        if(allvideogame==="no game found") return 
         dispatch(orderByName(e.target.value));
         setOrder(`order ${e.target.value}`)
     }
 
     const handleOrderByRating = (e)=>{
+        if(allvideogame==="no game found") return 
         dispatch(orderByRating(e.target.value));
         setOrder(`order ${e.target.value}`)   
     }
 
     const hadleFilterByTypeId = (e)=>{
+        if(allvideogame==="no game found") return
         dispatch(filterByTypeId(e.target.value));
         setPage(1)       
     }
 
     const handleFilterByGenre = (e)=>{
+        if(allvideogame==="no game found") return 
         dispatch(filterByGenre(e.target.value));
         setPage(1)
     }

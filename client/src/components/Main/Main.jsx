@@ -6,7 +6,7 @@ import Loading from "../Loading/Loading";
 import { useDispatch, useSelector} from "react-redux";
 import { useEffect, useState } from "react";
 import {getAllVideogame} from "./../../redux/actions"
-
+import Error from "../Error/Error"
 
 
 function Main () {
@@ -28,8 +28,7 @@ function Main () {
     const indexOfFirstCard= indexOfLastCard - videogameByPage;
     const currentVideogames= allvideogame.slice(indexOfFirstCard, indexOfLastCard);
     const calculationNumberPage= Math.ceil(allvideogame.length/videogameByPage);
-    //console.log(calculationNumberPage)
-    //console.log(page)
+    
 
     const handleNumberPage=(number)=>{
         setPage(parseInt(number))
@@ -49,18 +48,21 @@ function Main () {
     if(allvideogame.length >0 && loading){
         setLoading(false);
     }
+    
 
     if(loading ) return(<Loading/>)
     return(
         <section>
             <Header setPage={setPage}/>
-            <Aside setPage={setPage} order={order} setOrder={setOrder}/>
+            <Aside setPage={setPage} order={order} setOrder={setOrder} allvideogame={allvideogame}/>
             <Paginated
             calculationNumberPage={calculationNumberPage}
             handleNumberPage={handleNumberPage}
             goToNextPage={goToNextPage}
             goToPreviousPage={goToPreviousPage}/>
-            <Card currentVideogames={currentVideogames}/>
+            { allvideogame==="no game found"? <Error/> :
+            <Card currentVideogames={currentVideogames} allvideogame={allvideogame}/>
+            }
             <Paginated 
             calculationNumberPage={calculationNumberPage} 
             handleNumberPage={handleNumberPage}

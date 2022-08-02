@@ -11,8 +11,11 @@ function Nav ({setPage}){
 
     const handleSubmit = (e)=>{
         e.preventDefault();
+        if(name.trim().length <= 0) return 
+        if(!name) return 
         dispatch(searchVideogame(name));
         setPage(1);
+        setName("")   
     }
     
     return(
@@ -22,7 +25,7 @@ function Nav ({setPage}){
             value={name} 
             onChange={e=>setName(e.target.value)} 
             className={NavCss.nav__input}/>
-            <input type="submit"  value="search"onClick={e=>handleSubmit(e)} className={NavCss.nav__inputSubmit}/>
+            <input type="submit"  value="search" onClick={e=>handleSubmit(e)} className={NavCss.nav__inputSubmit}/>
         </nav>
     )
 }

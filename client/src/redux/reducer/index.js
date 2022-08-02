@@ -28,6 +28,7 @@ const rootReducer = (state = initialState, action) =>{
             return {...state, allVideogame: action.payload, aux:action.payload}
 
         case SEARCH_VIDEOGAME:
+            console.log(action.payload)
             return {...state, allVideogame: action.payload, aux:action.payload}
 
         case GET_ALL_GENRES:
@@ -38,11 +39,11 @@ const rootReducer = (state = initialState, action) =>{
 
         case ORDER_BY_NAME:
             const name = orderName(action, state)
-            return {...state, allVideogame: action.payload==="all"? state.aux : name }
+            return {...state, allVideogame: action.payload==="all"? state.allVideogame : name }
 
         case ORDER_BY_RATING:
             const rating = orderRating(action, state)
-            return{...state, allVideogame: action.payload==="all"? state.aux : rating}
+            return{...state, allVideogame: action.payload==="all"? state.allVideogame : rating}
 
         case FILTER_BY_TYPE_ID:
             const id = filterTypeId(action,state);
@@ -55,6 +56,7 @@ const rootReducer = (state = initialState, action) =>{
         case DETAIL:
             console.log(action.payload)
             return {...state, detail: action.payload}
+            
         case CLEAN_DATA:
             return {...state, detail: action.payload}
             

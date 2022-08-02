@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import cardCss from "./Card.module.css"
-import Page404 from "../Page404/Page404";
+import Error from "../Error/Error"
 
 function Card ({currentVideogames}) {
+
     return(
         <section className={cardCss.Card__container}>
            { currentVideogames.length > 0?
@@ -18,7 +19,7 @@ function Card ({currentVideogames}) {
                     </ul>
                     <p className={cardCss.card__rating}>Rating: {e.rating? e.rating : "-"}</p>
                 </div>)}) 
-                : <Page404 />
+                : <Error />
            }
         </section>
         
