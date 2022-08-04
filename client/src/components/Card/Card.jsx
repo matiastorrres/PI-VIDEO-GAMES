@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import cardCss from "./Card.module.css"
-import Error from "../Error/Error"
+
 
 function Card ({currentVideogames}) {
 
     return(
         <section className={cardCss.Card__container}>
-           { currentVideogames.length > 0?
+           { 
            currentVideogames.map(e=>{
             return(
                 <div key={e.id} className={cardCss.card}>
@@ -19,7 +19,6 @@ function Card ({currentVideogames}) {
                     </ul>
                     <p className={cardCss.card__rating}>Rating: {e.rating? e.rating : "-"}</p>
                 </div>)}) 
-                : <Error />
            }
         </section>
         

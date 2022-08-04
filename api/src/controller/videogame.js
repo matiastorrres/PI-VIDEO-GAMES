@@ -98,7 +98,7 @@ const searchVideogameDb = async(name1) => {
             id:e.id,
             background_image: e.background_image,
             genres: e.Genres.map(e=>e.name),
-            rating: rating
+            rating: e.rating
         }
      })
 }

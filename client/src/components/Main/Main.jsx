@@ -61,7 +61,7 @@ function Main () {
             goToNextPage={goToNextPage}
             goToPreviousPage={goToPreviousPage}/>
             { allvideogame==="no game found"? <Error/> :
-            <Card currentVideogames={currentVideogames} allvideogame={allvideogame}/>
+            <Card currentVideogames={currentVideogames} />
             }
             <Paginated 
             calculationNumberPage={calculationNumberPage} 

@@ -14,6 +14,7 @@ function Detail (){
     const dispatch = useDispatch()
     const detail = useSelector(state=>state.detail)
     const {id} = useParams()
+    console.log(id)
 
 
     useEffect(()=>{
@@ -29,7 +30,7 @@ function Detail (){
         setLoading(true)
         dispatch(cleanData())
     }
-
+   
 
 
     if(Object.keys(detail).length > 0 && loading){
@@ -39,7 +40,8 @@ function Detail (){
     return(
         <section className={detailCss.section}>
             <Link to="/home">
-            <button onClick={handleLoading} className={detailCss.botton}>back</button>
+            <button onClick={handleLoading} className={detailCss.botton}>back
+            </button>
             </Link>
             { detail.error?
             <Error/> :

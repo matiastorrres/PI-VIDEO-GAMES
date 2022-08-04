@@ -69,12 +69,14 @@ router.post("/", async(req, res)=>{
         });
            
           await videogame.addGenres(genresDb)
-          genresDb.map(e=>console.log(e.toJSON())) //me devulve un array de objetos
+         // genresDb.map(e=>console.log(e.toJSON())) //me devulve un array de objetos
          return res.json("successfully created video game")
          
     } catch (error) {
         return httpError(res,error)
     }
 })
+
+
 
 module.exports = router
