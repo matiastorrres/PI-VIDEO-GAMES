@@ -13,6 +13,7 @@ function Detail (){
 
     const dispatch = useDispatch()
     const detail = useSelector(state=>state.detail)
+    
     const {id} = useParams()
     console.log(id)
 
@@ -58,7 +59,7 @@ function Detail (){
            <p className={detailCss.Detail__released}>released: {detail.released}</p>
            <p>rating: {detail.rating}</p>
            </div>
-          
+           
             }
         </section>
     )
