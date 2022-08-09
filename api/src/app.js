@@ -7,8 +7,10 @@ const routes = require('./routes/index.js');
 require('./db.js'); //para que la ejecuto?? sino la  guardo en ninguna variable
 
 const server = express();
+const cors = require("cors")
 
 server.name = 'API'; //cambia el nombre del servidor, pero no se con que fin??
+server.use(cors());
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 //Extended false utiliza la librería querystring mientras que true la librería qs. 
 //La sintaxis de extended:true permite el uso de otras características como rich objects y 
@@ -17,7 +19,7 @@ server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');

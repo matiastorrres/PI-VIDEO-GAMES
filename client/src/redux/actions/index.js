@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import {GET_ALL_VIDEOGAME,
         SEARCH_VIDEOGAME, 
         ORDER_BY_NAME, 
@@ -11,8 +13,8 @@ import {GET_ALL_VIDEOGAME,
 
 export function getAllVideogame (){
     return function(dispatch){
-        fetch("http://localhost:3001/videogame")
-        .then(res=>res.json())
+        axios("/videogame")
+        .then(res=>res.data)
         .then(payload=>dispatch({ type:GET_ALL_VIDEOGAME , payload }))
         .catch(error=>console.log(error))
     }
@@ -20,8 +22,8 @@ export function getAllVideogame (){
 
 export function searchVideogame(name){
     return function(dispatch){
-        fetch(`http://localhost:3001/videogame?name=${name}`)
-        .then(res=>res.json())
+        axios(`/videogame?name=${name}`)
+        .then(res=>res.data)
         .then(payload=>dispatch({ type:SEARCH_VIDEOGAME, payload }))
         .catch(error=>console.log(error))
     }
@@ -29,8 +31,8 @@ export function searchVideogame(name){
 
 export function getaAllGenres(){
     return function(dispatch){
-        fetch("http://localhost:3001/genre")
-        .then(res=>res.json())
+        axios("/genre")
+        .then(res=>res.data)
         .then(payload=>dispatch({type:GET_ALL_GENRES, payload}))
         .catch(error=>console.log(error))
     }
@@ -56,8 +58,8 @@ export function filterByGenre(filter){
 
 export function getDetail (id){
     return function(dispatch){
-        fetch(`http://localhost:3001/videogame/${id}`)
-        .then(res=>res.json())
+        axios(`/videogame/${id}`)
+        .then(res=>res.data)
         .then(payload=>dispatch({type:DETAIL, payload}))
         .catch(error=>console(error))
     }
@@ -65,8 +67,8 @@ export function getDetail (id){
 
 export function getPlatform (){
     return function(dispatch){
-        fetch("http://localhost:3001/videogame/platform")
-        .then(res=>res.json())
+        axios("/videogame/platform")
+        .then(res=>res.data)
         .then(payload => dispatch ({type:PLATFORM, payload}))
         .catch(error=>console(error))
     }
