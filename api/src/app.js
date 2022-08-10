@@ -1,6 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser'); //se utiliza para guardar informacion del usuario, ahora se usa "sesiones"
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 
@@ -10,11 +10,11 @@ const server = express();
 
 server.name = 'API'; //cambia el nombre del servidor, pero no se con que fin??
 
-server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
+server.use(express.urlencoded({ extended: true, limit: '50mb' }));
 //Extended false utiliza la librería querystring mientras que true la librería qs. 
 //La sintaxis de extended:true permite el uso de otras características como rich objects y 
 //arreglos codificados dentro del formato URL-encoded.
-server.use(bodyParser.json({ limit: '50mb' }));
+server.use(express.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
