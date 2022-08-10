@@ -7,10 +7,9 @@ const routes = require('./routes/index.js');
 require('./db.js'); //para que la ejecuto?? sino la  guardo en ninguna variable
 
 const server = express();
-const cors = require("cors")
 
 server.name = 'API'; //cambia el nombre del servidor, pero no se con que fin??
-server.use(cors());
+
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 //Extended false utiliza la librería querystring mientras que true la librería qs. 
 //La sintaxis de extended:true permite el uso de otras características como rich objects y 
