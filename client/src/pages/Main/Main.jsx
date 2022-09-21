@@ -49,11 +49,11 @@ function Main() {
     setLoading(false);
   }
 
-  if (loading) return <Loading />;
+  // if (loading) return <Loading />;
   return (
     <section>
       <Header setPage={setPage} />
-      <Aside
+      {/* <Aside
         setPage={setPage}
         order={order}
         setOrder={setOrder}
@@ -75,7 +75,7 @@ function Main() {
         handleNumberPage={handleNumberPage}
         goToNextPage={goToNextPage}
         goToPreviousPage={goToPreviousPage}
-      />
+      /> */}
     </section>
   );
 }

@@ -1,23 +1,22 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  } 
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-.Paginate__container { 
-    height: 40px;
-    width: 100vw;
-    background-color: black;
-    background-size: cover ;
-    background-position: center top;
-    display: flex;
-    justify-content: space-evenly;
-    align-content: center;
-    flex-wrap: wrap;
+.Paginate__container {
+  height: 40px;
+  width: 100vw;
+  background-color: black;
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-wrap: wrap;
+}
 
-  }
-  
-  button {
+/* button {
     width: 120px;
     height: 45px;
     font-size: 18px;
@@ -55,4 +54,4 @@
    
    button:active:before {
     background: #b9b9b9;
-   }
+   } */

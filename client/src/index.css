@@ -17,8 +17,8 @@
   --white-alpha-color: rgba(255, 255, 255, 0.5);
   --black-alpha-color: rgba(0, 0, 0, 0.5);
   --font: "Raleway", sans-serif;
-  --max-width: 1200px;
-  --header-height: 4rem;
+  --max-width: 75rem;
+  --header-height: 6rem;
 }
 /* ********** Reset ********** */
 html {
@@ -40,7 +40,7 @@ body {
   /* para eliminar la barra de desplazamiento horizontal que generan la imagenes grandes*/
   overflow-x: hidden;
   color: var(--text-color);
-  background-color: green;
+  background-color: blue;
 }
 
 a {
@@ -90,7 +90,7 @@ img {
 p {
   line-height: 1.6;
 }
-/*utilitis*/
+/*components*/
 
 /*button*/
 .btn {
@@ -129,4 +129,9 @@ p {
 
 .btn:active:before {
   background: var(--second-color);
+}
+/*utilitis*/
+
+.none {
+  display: none;
 }

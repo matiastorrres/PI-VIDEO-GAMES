@@ -1,0 +1,19 @@
+.nav {
+  width: 18rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.nav-input-text {
+  border: none;
+  outline: thin solid white;
+  text-align: center;
+}
+.nav-input-submit {
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: thin solid white;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
