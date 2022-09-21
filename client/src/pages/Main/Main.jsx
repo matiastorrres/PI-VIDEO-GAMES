@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllVideogame } from "../../redux/actions";
 import Error from "../../components/Error/Error";
+import "./Main.css";
 
 function Main() {
   const [order, setOrder] = useState("");
@@ -53,26 +54,30 @@ function Main() {
   return (
     <section>
       <Header setPage={setPage} />
-      <Aside
-        setPage={setPage}
-        order={order}
-        setOrder={setOrder}
-        allvideogame={allvideogame}
-      />
+      <div className="main-desk">
+        <Aside
+          setPage={setPage}
+          order={order}
+          setOrder={setOrder}
+          allvideogame={allvideogame}
+        />
 
-      {allvideogame === "no game found" ? (
-        <Error />
-      ) : (
-        <>
-          <Card currentVideogames={currentVideogames} />
-          <Paginated
-            calculationNumberPage={calculationNumberPage}
-            handleNumberPage={handleNumberPage}
-            goToNextPage={goToNextPage}
-            goToPreviousPage={goToPreviousPage}
-          />
-        </>
-      )}
+        {allvideogame === "no game found" ? (
+          <Error />
+        ) : (
+          <>
+            <Card currentVideogames={currentVideogames} />
+            <div>
+              <Paginated
+                calculationNumberPage={calculationNumberPage}
+                handleNumberPage={handleNumberPage}
+                goToNextPage={goToNextPage}
+                goToPreviousPage={goToPreviousPage}
+              />
+            </div>
+          </>
+        )}
+      </div>
     </section>
   );
 }

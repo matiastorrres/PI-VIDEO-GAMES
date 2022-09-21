@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDetail, cleanData } from "../../redux/actions";
-import { Link } from "react-router-dom";
 import "./Detail.css";
 import Error from "../../components/Error/Error";
 import Loading from "../../components/Loading/Loading";
@@ -25,11 +24,6 @@ function Detail() {
     return dispatch(cleanData());
   }, [dispatch]);
 
-  const handleLoading = () => {
-    setLoading(true);
-    dispatch(cleanData());
-  };
-
   if (Object.keys(detail).length > 0 && loading) {
     setLoading(false);
   }
@@ -41,7 +35,11 @@ function Detail() {
       ) : (
         <div className="detail-container">
           <h2 className="detail-title">{detail.name}</h2>
-          <img src={detail.background_image} alt="detail" />
+          <img
+            src={detail.background_image}
+            alt="detail"
+            className="detail-img"
+          />
           <div className="detail-description">
             <h4>Description</h4>
             <p>
@@ -65,11 +63,6 @@ function Detail() {
             <p>Released: {detail.released}</p>
             <p>Rating: {detail.rating}</p>
           </div>
-          <Link to="/home">
-            <button onClick={handleLoading} className="detail-btn">
-              BACK
-            </button>
-          </Link>
         </div>
       )}
     </section>
