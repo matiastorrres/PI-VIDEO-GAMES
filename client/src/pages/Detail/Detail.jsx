@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDetail, cleanData } from "../../redux/actions";
 import { Link } from "react-router-dom";
-import detailCss from "./Detail.module.css";
+import "./Detail.css";
 import Error from "../../components/Error/Error";
-
 import Loading from "../../components/Loading/Loading";
 
 function Detail() {
@@ -36,43 +35,41 @@ function Detail() {
   }
   if (loading) return <Loading />;
   return (
-    <section className={detailCss.section}>
-      <Link to="/home">
-        <button onClick={handleLoading} className={detailCss.botton}>
-          back
-        </button>
-      </Link>
+    <section className="detail">
       {detail.error ? (
         <Error />
       ) : (
-        <div className={detailCss.Detail__container}>
-          <h2 className={detailCss.Detail__title}>{detail.name}</h2>
-          <img
-            src={detail.background_image}
-            alt="detail"
-            className={detailCss.Detail__img}
-          />
-          <ul className={detailCss.Detail__genres}>
-            {" "}
-            genres:
-            {detail.genres &&
-              detail.genres.map((e) => <li key={e}> -- {e} -- </li>)}
-          </ul>
-          <ul className={detailCss.Detail__plataforms}>
-            {" "}
-            plataforms:
-            {detail.platforms &&
-              detail.platforms.map((e) => <li key={e}>-- {e} --</li>)}
-          </ul>
-          <p className={detailCss.Detail__description}>
-            {" "}
-            description:{" "}
-            {detail.description && detail.description.replace(/<[^>]+>/g, "")}
-          </p>
-          <p className={detailCss.Detail__released}>
-            released: {detail.released}
-          </p>
-          <p>rating: {detail.rating}</p>
+        <div className="detail-container">
+          <h2 className="detail-title">{detail.name}</h2>
+          <img src={detail.background_image} alt="detail" />
+          <div className="detail-description">
+            <h4>Description</h4>
+            <p>
+              {detail.description && detail.description.replace(/<[^>]+>/g, "")}
+            </p>
+          </div>
+          <div className="detail-platforms-genres">
+            <ul>
+              Plataforms:
+              {detail.platforms &&
+                detail.platforms.map((e) => <li key={e}>- {e} </li>)}
+            </ul>
+            <ul>
+              Genres:
+              {detail.genres &&
+                detail.genres.map((e) => <li key={e}> - {e} </li>)}
+            </ul>
+          </div>
+
+          <div className="detail-released-rating">
+            <p>Released: {detail.released}</p>
+            <p>Rating: {detail.rating}</p>
+          </div>
+          <Link to="/home">
+            <button onClick={handleLoading} className="detail-btn">
+              BACK
+            </button>
+          </Link>
         </div>
       )}
     </section>
@@ -80,5 +77,3 @@ function Detail() {
 }
 
 export default Detail;
-
-//pregutar porque para renderizar hace falta usar ese condicional???sacarse esa dudad..

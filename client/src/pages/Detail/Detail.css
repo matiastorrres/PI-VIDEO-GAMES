@@ -1,0 +1,47 @@
+.detail-container {
+  margin: 1rem;
+  border: solid 0.2rem black;
+}
+.detail-title {
+  text-align: center;
+  padding: 1rem;
+}
+.detail-platforms-genres {
+  display: flex;
+  justify-content: space-between;
+  justify-items: start;
+
+  border-bottom: solid black;
+}
+.detail-platforms-genres > ul {
+  font-weight: bold;
+  padding: 1rem;
+  list-style: none;
+  justify-self: start;
+}
+.detail-description {
+  padding: 0 1rem;
+  font-weight: bold;
+  border-bottom: solid black;
+}
+
+.detail-description > h4 {
+  text-align: center;
+  font-weight: bold;
+  padding: 1rem;
+}
+.detail-released-rating {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 0 0.3rem;
+}
+.detail-btn {
+  width: 100%;
+  height: 2rem;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  border: none;
+  outline: none;
+}

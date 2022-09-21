@@ -129,8 +129,3 @@ p {
 .btn:active:before {
   background: var(--second-color);
 }
-/*utilitis*/
-
-.none {
-  display: none;
-}
