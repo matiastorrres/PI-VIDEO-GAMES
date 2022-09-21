@@ -6,7 +6,7 @@ import {
   getAllVideogame,
 } from "../../redux/actions";
 import { Link, useHistory } from "react-router-dom";
-import formCss from "./Create.module.css";
+import "./Create.css";
 import Loading from "../../components/Loading/Loading";
 
 function Create() {
@@ -48,13 +48,13 @@ function Create() {
     )
       setErrors({
         ...errors,
-        name: "Este campo es obligatorio, se aceptan letras, numeros, guiones medios, parentesis y como maximo 255 caracteres",
+        name: "This field is required",
       });
     else setErrors({ ...errors, name: false });
   }
   function handleRepeat(value) {
     const repeat = allVideogame.filter((e) => e.name === value);
-    if (repeat.length > 0) setRepeat("nombre existente");
+    if (repeat.length > 0) setRepeat("Existing name");
     else setRepeat(false);
   }
   function validateDescription(value) {
@@ -62,8 +62,7 @@ function Create() {
     if (!string.test(value) || !value || value.trim().length <= 0)
       setErrors({
         ...errors,
-        description:
-          "Este campo es obligatorio, se aceptan letras, numeros, guiones medios y parentesis",
+        description: "This field is required",
       });
     else setErrors({ ...errors, description: false });
   }
@@ -81,7 +80,7 @@ function Create() {
       setErrors({
         ...errors,
         released:
-          "la fecha a ingresar debe menor a la actual y mayor al año 1952",
+          "The date to enter must be less than the current and greater than the year 1952",
       });
     else setErrors({ ...errors, released: false });
   }
@@ -92,7 +91,7 @@ function Create() {
       setErrors({
         ...errors,
         rating:
-          "debe ser mayor a 0 y menor a 5, puede contener dos decimales separados por un punto de la parte enteras",
+          "It must be greater than 0 and less than 5, it can contain two decimals separated by a point from the integer part",
       });
     else setErrors({ ...errors, rating: false });
   }
@@ -101,8 +100,7 @@ function Create() {
     if (value && !img.test(value))
       setErrors({
         ...errors,
-        background_image:
-          "el valor ingresado no corresponde a una dirreccion de imagen",
+        background_image: "The value entered does not correspond to a url",
       });
     else setErrors({ ...errors, background_image: false });
   }
@@ -137,7 +135,7 @@ function Create() {
     e.preventDefault();
     console.log("aca", input);
     if (errors.name || errors.description || errors.released || errors.rating)
-      return alert("solucione los errores");
+      return alert("Solutions the errors");
     const post = {
       name: input.name,
       description: input.name,
@@ -164,7 +162,7 @@ function Create() {
       genres: [],
       platforms: [],
     });
-    alert("el juego se creo exitosamente");
+    alert("The game was created successfully");
     history.push("/home");
   };
 
@@ -174,16 +172,12 @@ function Create() {
   if (loading) return <Loading />;
 
   return (
-    <section className={formCss.section}>
-      <Link to="/home">
-        <button className={formCss.botton}>back</button>
-      </Link>
-      <form onSubmit={handlepost} className={formCss.Form__container}>
-        <div className={formCss.Form__name}>
-          <label className={formCss.Form__label}>Videogame name: </label>
+    <section>
+      <form onSubmit={handlepost} className="form-container">
+        <div className="form-name">
+          <label>Videogame name: </label>
           <input
             type="text"
-            className={formCss.Form__input}
             value={input.name}
             name="name"
             onChange={(e) => {
@@ -192,27 +186,23 @@ function Create() {
               handleRepeat(e.target.value);
             }}
           />
-          {errors.name ? (
-            <p className={formCss.Form__error}>{errors.name}</p>
-          ) : null}
-          {repeat ? <p className={formCss.Form__error}>{repeat}</p> : null}
+          {errors.name ? <p className="form-error">{errors.name}</p> : null}
+          {repeat ? <p className="form-error">{repeat}</p> : null}
         </div>
-        <div className={formCss.Form__description}>
-          <label className={formCss.Form__label}>Description: </label>
+        <div className="form-description">
+          <label className="">Description: </label>
           <textarea
             name="description"
-            rows="5"
-            cols="100"
             value={input.description}
             onChange={(e) => handleChange(e)}
             onBlur={(e) => validateDescription(e.target.value)}
           />
           {errors.description ? (
-            <p className={formCss.Form__error}> {errors.description} </p>
+            <p className="form-error"> {errors.description} </p>
           ) : null}
         </div>
-        <div className={formCss.Form__date}>
-          <label className={formCss.Form__label}>release date: </label>
+        <div className="form-date">
+          <label className="">Release date: </label>
           <input
             type="date"
             name="released"
@@ -223,11 +213,11 @@ function Create() {
             }}
           />
           {errors.released ? (
-            <p className={formCss.Form__error}> {errors.released} </p>
+            <p className="form-error"> {errors.released} </p>
           ) : null}
         </div>
-        <div className={formCss.Form__rating}>
-          <label className={formCss.Form__label}>Rating: </label>
+        <div className="form-rating">
+          <label className="">Rating: </label>
           <input
             type="number"
             name="rating"
@@ -237,12 +227,10 @@ function Create() {
               validateRating(e.target.value);
             }}
           />
-          {errors.rating ? (
-            <p className={formCss.Form__error}>{errors.rating}</p>
-          ) : null}
+          {errors.rating ? <p className="form-error">{errors.rating}</p> : null}
         </div>
-        <div className={formCss.Form__img}>
-          <label className={formCss.Form__label}>Image: </label>
+        <div className="form-img">
+          <label className="">Image URL: </label>
           <input
             type="url"
             value={input.background_image}
@@ -251,14 +239,13 @@ function Create() {
             onBlur={(e) => validateImagen(e.target.value)}
           />
           {errors.background_image ? (
-            <p className={formCss.Form__error}>{errors.background_image}</p>
+            <p className="form-error">{errors.background_image}</p>
           ) : null}
         </div>
-        <div className={formCss.Form__genres}>
+        <div className="form-genres">
+          <h4>Select genres</h4>
           {allGenre.map((e) => (
-            <label key={e} className={formCss.Form__label}>
-              {" "}
-              {e}{" "}
+            <div>
               <input
                 type="checkbox"
                 key={e}
@@ -267,15 +254,15 @@ function Create() {
                   genreCheck(e);
                 }}
               />
-            </label>
+              <label key={e}>{e}</label>
+            </div>
           ))}
-          {errors.genres ? <p>{errors.genres}</p> : null}
+          {errors.genres ? <p className="form-error">{errors.genres}</p> : null}
         </div>
-        <div className={formCss.Form__platform}>
+        <div className="form-platform">
+          <h4>Select the platforms</h4>
           {allPlatform.map((e) => (
-            <label key={e} className={formCss.Form__label}>
-              {" "}
-              {e}{" "}
+            <div>
               <input
                 type="checkbox"
                 key={e}
@@ -284,12 +271,14 @@ function Create() {
                   platformCheck(e);
                 }}
               />
-            </label>
+              <label key={e}> {e}</label>
+            </div>
           ))}
         </div>
         <input
+          className="form-btn"
           type="submit"
-          value="to create"
+          value="MAKE"
           disabled={
             !input.name ||
             !input.genres.length ||
