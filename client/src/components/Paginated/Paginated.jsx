@@ -1,24 +1,35 @@
-import asideCss from "./paginated.module.css";
+import "./Paginated.css";
 
-function Paginated ({calculationNumberPage, handleNumberPage, goToNextPage, goToPreviousPage}){
+function Paginated({
+  calculationNumberPage,
+  handleNumberPage,
+  goToNextPage,
+  goToPreviousPage,
+}) {
+  const numberPage = [];
 
-    const numberPage=[];
+  for (let i = 1; i <= calculationNumberPage; i++) {
+    numberPage.push(i);
+  }
 
-    for(let i=1; i <= calculationNumberPage; i++ ){
-        numberPage.push(i)
-    }
-    
-    return(
-        <div className={asideCss.Paginate__container }>
-            <button onClick={goToPreviousPage}>Previous</button>
-            <div>
-            {
-                numberPage.map(nro => <button key={nro} value={nro}onClick={e=>handleNumberPage(e.target.value)}> {nro} </button>)
-            }
-            </div>
-            <button onClick={goToNextPage}>Next</button>
-        </div>
-    )
+  return (
+    <section className="paginated">
+      <button onClick={goToPreviousPage}>Previous</button>
+
+      {numberPage.map((nro) => (
+        <button
+          key={nro}
+          value={nro}
+          onClick={(e) => handleNumberPage(e.target.value)}
+        >
+          {" "}
+          {nro}{" "}
+        </button>
+      ))}
+
+      <button onClick={goToNextPage}>Next</button>
+    </section>
+  );
 }
 
 export default Paginated;

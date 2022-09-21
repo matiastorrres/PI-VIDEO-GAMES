@@ -1,0 +1,15 @@
+.paginated {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  height: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+.paginated > button {
+  background-color: white;
+  width: 5rem;
+  background-color: transparent;
+  color: white;
+}

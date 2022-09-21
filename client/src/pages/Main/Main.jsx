@@ -49,33 +49,30 @@ function Main() {
     setLoading(false);
   }
 
-  // if (loading) return <Loading />;
+  if (loading) return <Loading />;
   return (
     <section>
       <Header setPage={setPage} />
-      {/* <Aside
+      <Aside
         setPage={setPage}
         order={order}
         setOrder={setOrder}
         allvideogame={allvideogame}
       />
-      <Paginated
-        calculationNumberPage={calculationNumberPage}
-        handleNumberPage={handleNumberPage}
-        goToNextPage={goToNextPage}
-        goToPreviousPage={goToPreviousPage}
-      />
+
       {allvideogame === "no game found" ? (
         <Error />
       ) : (
-        <Card currentVideogames={currentVideogames} />
+        <>
+          <Card currentVideogames={currentVideogames} />
+          <Paginated
+            calculationNumberPage={calculationNumberPage}
+            handleNumberPage={handleNumberPage}
+            goToNextPage={goToNextPage}
+            goToPreviousPage={goToPreviousPage}
+          />
+        </>
       )}
-      <Paginated
-        calculationNumberPage={calculationNumberPage}
-        handleNumberPage={handleNumberPage}
-        goToNextPage={goToNextPage}
-        goToPreviousPage={goToPreviousPage}
-      /> */}
     </section>
   );
 }

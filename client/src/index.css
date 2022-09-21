@@ -40,7 +40,6 @@ body {
   /* para eliminar la barra de desplazamiento horizontal que generan la imagenes grandes*/
   overflow-x: hidden;
   color: var(--text-color);
-  background-color: blue;
 }
 
 a {

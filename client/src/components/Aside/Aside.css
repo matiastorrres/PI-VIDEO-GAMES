@@ -1,0 +1,12 @@
+.aside {
+  background-color: black;
+  color: white;
+}
+
+.aside > section {
+  border-bottom: solid;
+  padding: 0.5rem;
+  height: 3rem;
+  text-align: center;
+  font-size: large;
+}

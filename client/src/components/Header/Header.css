@@ -1,9 +1,9 @@
 .header {
   background-color: black;
-  position: fixed;
   width: 100%;
   height: var(--header-height);
   padding: 1rem;
+  border-bottom: solid white;
 }
 .header > .grid-container {
   margin-left: auto;
