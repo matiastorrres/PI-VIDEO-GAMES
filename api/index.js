@@ -17,18 +17,19 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn, Genre} = require('./src/db.js');
-const {getGenreApi} = require("./src/controller/genre")
+const server = require("./src/app.js");
+const { conn, Genre } = require("./src/db.js");
+const { getGenreApi } = require("./src/controller/genre");
 
 // Syncing all the models at once.
-conn.sync({ force: false })
-.then( async() => {
-   server.listen(process.env.PORT , () => { console.log('%s listening at 3001') }); // eslint-disable-line no-console
-   const genreApi= await getGenreApi();
-   genreApi.map(e=>{
-      Genre.findOrCreate({
-         where: {name:e.name}
-      })
-   })  
+conn.sync({ force: false }).then(async () => {
+  server.listen(process.env.PORT, () => {
+    console.log("%s listening at 3001");
+  }); // eslint-disable-line no-console
+  const genreApi = await getGenreApi();
+  genreApi?.map((e) => {
+    Genre.findOrCreate({
+      where: { name: e.name },
+    });
+  });
 });
