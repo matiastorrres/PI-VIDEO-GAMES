@@ -1,0 +1,23 @@
+.hero-image {
+  background-image: url("../../img/landing.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+}
+.hero-image-opacity {
+  background-color: var(--with-alpha-color);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 3rem;
+}
+.hero-image-content {
+  text-align: center;
+}
+.hero-image-title {
+  font-size: 10vw;
+  margin-bottom: 1rem;
+  color: var(--second-color);
+}

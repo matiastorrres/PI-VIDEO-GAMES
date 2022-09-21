@@ -1,11 +1,11 @@
-import errorCss from "./Error.module.css"
+import "./Error.css";
 
-function Invalidate (){
-    return(
-        <div className={errorCss.error_container}>
-            <h1>No se encontraron resultados</h1>
-        </div>
-    )
+function Invalidate() {
+  return (
+    <div className="error-container">
+      <h2>No results found</h2>
+    </div>
+  );
 }
 
 export default Invalidate;

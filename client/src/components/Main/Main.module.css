@@ -1,8 +1,0 @@
-
-.Main__container{
-    display: grid;  
-    grid-template-columns: 1fr 1fr 1fr;
-    align-content: center;
-    background-image: url("/client/src/img/main.jpg");
-
-}
