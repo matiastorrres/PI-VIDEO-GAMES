@@ -44,6 +44,18 @@ function Aside({ setPage, setOrder, allvideogame }) {
   return (
     <aside className="aside">
       <section>
+        <button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="23"
+            viewBox="0 0 24 24"
+          >
+            <path d="M4 6H20V8H4zM4 11H20V13H4zM4 16H20V18H4z" />
+          </svg>
+        </button>
+      </section>
+      <section>
         <label>Choose a genres: </label>
         <select onChange={(e) => handleFilterByGenre(e)} name="genres">
           <option value="all">All</option>
@@ -65,20 +77,28 @@ function Aside({ setPage, setOrder, allvideogame }) {
         </select>
       </section>
       <section>
-        <label>Order alphabetically: </label>
+        {/* <label>Order alphabetically: </label>
         <select onChange={(e) => handleOrderByName(e)}>
           <option value="all">----------</option>
           <option value="az">A-Z</option>
           <option value="za">Z-A</option>
-        </select>
+        </select> */}
       </section>
+
+      {/* <label>Sort by score</label>
+      <select onChange={(e) => handleOrderByRating(e)}>
+        <option value="all">------------</option>
+        <option value="des">Highest score</option>
+        <option value="asc">Lowest score</option>
+      </select> */}
       <section>
-        <label>Sort by score</label>
-        <select onChange={(e) => handleOrderByRating(e)}>
-          <option value="all">------------</option>
-          <option value="des">Highest score</option>
-          <option value="asc">Lowest score</option>
-        </select>
+        <h4>Sort by score</h4>
+        <button value="des" onClick={(e) => handleOrderByRating(e)}>
+          Highest score
+        </button>
+        <button value="asc" onClick={(e) => handleOrderByRating(e)}>
+          Lowest score
+        </button>
       </section>
     </aside>
   );

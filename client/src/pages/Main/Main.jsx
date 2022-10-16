@@ -53,7 +53,7 @@ function Main() {
   if (loading) return <Loading />;
   return (
     <section>
-      <Header setPage={setPage} />
+      {/* <Header setPage={setPage} /> */}
       <div className="main-desk">
         <Aside
           setPage={setPage}

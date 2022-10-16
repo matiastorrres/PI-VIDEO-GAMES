@@ -3,13 +3,13 @@
   color: white;
 }
 
-.aside > section {
+/* .aside > section {
   border-bottom: solid;
   padding: 0.5rem;
   height: 3rem;
   text-align: center;
   font-size: large;
-}
+} */
 @media (min-width: 1024px) {
   .aside > section {
     height: 6rem;
